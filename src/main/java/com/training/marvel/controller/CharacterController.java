@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.training.marvel.integration.CharacterClient;
 import com.training.marvel.model.Character;
-import com.training.marvel.model.CharactersData;
+import com.training.marvel.model.CharacterData;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -17,20 +17,17 @@ import reactor.core.publisher.Mono;
 
 @RestController
 public class CharacterController {
+	
 	@Autowired
 	private CharacterClient characterService;
 	
-	@Autowired
-	public CharacterController(CharacterClient characterService) {
-		this.characterService = characterService;
-	}
 
 	@ApiOperation(value = "Get  characters", notes = "Provides characters ids")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Successful retrieval of characters", response = Character.class),
 			@ApiResponse(code = 500, message = "Internal server error") })
 	@GetMapping("/characters")
-	public Flux<CharactersData> getCaracters() {
+	public Flux<CharacterData> getCaracters() {
 		return characterService.getCharacters();
 	}
 
@@ -39,7 +36,7 @@ public class CharacterController {
 			@ApiResponse(code = 200, message = "Successful retrieval of character", response = Character.class),
 			@ApiResponse(code = 500, message = "Internal server error") })
 	@GetMapping("/characters/{characterId}")
-	public Mono<CharactersData> getCharactersById(@PathVariable("characterId") int id) {
+	public Mono<CharacterData> getCharactersById(@PathVariable("characterId") int id) {
 		return characterService.getCharactersById(id);
 	}
 

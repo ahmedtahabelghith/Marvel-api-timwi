@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 
-public class CharactersUtil {
+public class CharacterUtil {
 
 	public static Instant instant = Instant.now();
 	public static long timeStamp = instant.toEpochMilli();

@@ -1,8 +1,9 @@
 package com.training.marvel.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data
+@Data @AllArgsConstructor
 public class Thumbnail {
 
 	private String path;
